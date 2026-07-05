@@ -1,0 +1,604 @@
+/* ============================================================
+   Les grandes victoires militaires de Byzance
+   Palette impériale : pourpre, or, rouge profond, ivoire.
+   ============================================================ */
+
+:root {
+  --pourpre: #3b1533;
+  --pourpre-fonce: #240b1f;
+  --pourpre-clair: #5a2450;
+  --or: #c9a227;
+  --or-clair: #e8c96a;
+  --rouge: #7a1f2b;
+  --ivoire: #f4ecd8;
+  --ivoire-sombre: #e4d8bc;
+  --encre: #2b1d12;
+  --ombre: rgba(20, 6, 18, 0.45);
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Georgia, "Palatino Linotype", "Book Antiqua", serif;
+  background:
+    radial-gradient(ellipse at top, var(--pourpre-clair) 0%, transparent 55%),
+    var(--pourpre-fonce);
+  color: var(--ivoire);
+  line-height: 1.65;
+}
+
+.app {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 1rem 3rem;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+h2 {
+  color: var(--or-clair);
+  font-size: 1.7rem;
+  border-bottom: 2px solid var(--or);
+  padding-bottom: 0.4rem;
+  margin-top: 3rem;
+}
+
+/* ---------- En-tête ---------- */
+
+.site-header {
+  text-align: center;
+  padding: 2.2rem 1rem 1.6rem;
+  border-bottom: 3px double var(--or);
+  background:
+    repeating-linear-gradient(
+      45deg,
+      transparent 0 14px,
+      rgba(201, 162, 39, 0.05) 14px 16px
+    );
+}
+
+.header-ornament {
+  font-size: 2.4rem;
+  color: var(--or);
+  text-shadow: 0 0 18px rgba(201, 162, 39, 0.55);
+  line-height: 1;
+}
+
+.site-header h1 {
+  margin: 0.5rem 0 0.4rem;
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  color: var(--or-clair);
+  text-shadow: 0 2px 10px var(--ombre);
+}
+
+.header-subtitle {
+  max-width: 46rem;
+  margin: 0 auto 1.1rem;
+  color: var(--ivoire-sombre);
+  font-style: italic;
+}
+
+.header-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem 1.4rem;
+}
+
+.header-nav a {
+  color: var(--or);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  border-bottom: 1px solid transparent;
+}
+
+.header-nav a:hover {
+  border-bottom-color: var(--or);
+}
+
+/* ---------- Filtres / légende ---------- */
+
+.victory-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.4rem 0 0.9rem;
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--or);
+  background: transparent;
+  color: var(--ivoire-sombre);
+  font-family: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  opacity: 0.45;
+  transition: opacity 0.2s, background 0.2s;
+}
+
+.filter-chip.active {
+  opacity: 1;
+  background: rgba(201, 162, 39, 0.12);
+  color: var(--ivoire);
+}
+
+.filter-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  border: 1px solid rgba(244, 236, 216, 0.7);
+}
+
+/* ---------- Carte ---------- */
+
+.map-and-card {
+  position: relative;
+  border: 4px double var(--or);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px var(--ombre);
+}
+
+.animated-map {
+  height: min(62vh, 560px);
+  min-height: 380px;
+  background: #d9cbaa;
+}
+
+/* Patine « carte ancienne » sur les tuiles OpenStreetMap. */
+.animated-map .leaflet-tile-pane {
+  filter: sepia(0.55) saturate(0.75) brightness(0.97) contrast(0.94);
+}
+
+.battle-marker-wrapper {
+  background: none;
+  border: none;
+}
+
+.battle-marker {
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin: 3px;
+  border-radius: 50%;
+  background: var(--marker-color);
+  border: 2px solid var(--ivoire);
+  box-shadow: 0 0 0 2px rgba(43, 29, 18, 0.35), 0 2px 6px rgba(0, 0, 0, 0.4);
+  animation: marker-pop 0.55s cubic-bezier(0.2, 1.6, 0.4, 1);
+}
+
+.battle-marker.selected {
+  box-shadow:
+    0 0 0 4px rgba(201, 162, 39, 0.85),
+    0 0 14px 4px rgba(201, 162, 39, 0.6);
+}
+
+@keyframes marker-pop {
+  0% {
+    transform: scale(0);
+  }
+  70% {
+    transform: scale(1.35);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.leaflet-tooltip {
+  font-family: Georgia, serif;
+  background: var(--ivoire);
+  color: var(--encre);
+  border: 1px solid var(--or);
+}
+
+/* ---------- Fiche bataille ---------- */
+
+.battle-card {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  width: min(380px, 92%);
+  max-height: 100%;
+  overflow-y: auto;
+  background: var(--ivoire);
+  color: var(--encre);
+  padding: 1.2rem 1.3rem 1.5rem;
+  border-left: 4px solid var(--or);
+  box-shadow: -8px 0 30px var(--ombre);
+}
+
+.battle-card h3 {
+  margin: 0.55rem 0 0.1rem;
+  font-size: 1.25rem;
+  color: var(--rouge);
+}
+
+.battle-date {
+  margin: 0 0 0.8rem;
+  font-style: italic;
+  color: #6b5335;
+}
+
+.battle-card-close {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.6rem;
+  border: 1px solid var(--rouge);
+  background: transparent;
+  color: var(--rouge);
+  border-radius: 50%;
+  width: 1.8rem;
+  height: 1.8rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.battle-type-badge {
+  display: inline-block;
+  color: #fff;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.22rem 0.6rem;
+  border-radius: 3px;
+}
+
+.battle-fields {
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+.battle-fields dt {
+  font-weight: 700;
+  color: var(--rouge);
+  margin-top: 0.75rem;
+  font-variant: small-caps;
+  letter-spacing: 0.04em;
+}
+
+.battle-fields dd {
+  margin: 0.15rem 0 0;
+}
+
+.effectifs-note {
+  margin: 0.4rem 0 0;
+  font-size: 0.84rem;
+  font-style: italic;
+  color: #6b5335;
+}
+
+.incertitudes {
+  font-style: italic;
+}
+
+.certitude-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-variant: normal;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.12rem 0.5rem;
+  border-radius: 999px;
+  margin-left: 0.4rem;
+  color: #fff;
+  vertical-align: middle;
+}
+
+.certitude-connu {
+  background: #2d6a4f;
+}
+
+.certitude-estime {
+  background: #b07d10;
+}
+
+.certitude-discute {
+  background: #b3541e;
+}
+
+.certitude-non-fiable {
+  background: #6c3a52;
+}
+
+/* ---------- Frise chronologique ---------- */
+
+.timeline {
+  margin-top: 1.2rem;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(201, 162, 39, 0.4);
+  border-radius: 6px;
+  padding: 1rem 1.2rem 1.3rem;
+}
+
+.timeline-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.1rem;
+}
+
+.control-button {
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 0.42rem 1rem;
+  border-radius: 4px;
+  border: 1px solid var(--or);
+  background: transparent;
+  color: var(--or-clair);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.control-button:hover {
+  background: rgba(201, 162, 39, 0.15);
+}
+
+.control-button.primary {
+  background: var(--or);
+  color: var(--pourpre-fonce);
+  font-weight: 700;
+}
+
+.control-button.primary:hover {
+  background: var(--or-clair);
+}
+
+.timeline-status {
+  font-size: 0.88rem;
+  color: var(--ivoire-sombre);
+  font-style: italic;
+}
+
+.timeline-track-wrapper {
+  padding: 0.4rem 0.5rem 0;
+}
+
+.timeline-track {
+  position: relative;
+  height: 3.1rem;
+  border-bottom: 2px solid var(--or);
+}
+
+.timeline-progress {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--rouge), var(--or-clair));
+  transition: width 0.6s ease;
+}
+
+.timeline-century {
+  position: absolute;
+  bottom: -2px;
+  height: 0.6rem;
+  border-left: 1px solid rgba(201, 162, 39, 0.5);
+}
+
+.timeline-century span {
+  position: absolute;
+  top: 0.6rem;
+  left: -1.1rem;
+  font-size: 0.68rem;
+  color: rgba(244, 236, 216, 0.6);
+}
+
+.timeline-tick {
+  position: absolute;
+  bottom: 0.55rem;
+  width: 13px;
+  height: 13px;
+  margin-left: -6.5px;
+  border-radius: 50%;
+  border: 2px solid var(--ivoire);
+  cursor: pointer;
+  padding: 0;
+  opacity: 0.22;
+  transform: scale(0.8);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.timeline-tick.revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.timeline-tick.selected {
+  box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.9);
+}
+
+.timeline-bounds {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  font-size: 0.78rem;
+  color: rgba(244, 236, 216, 0.75);
+  font-style: italic;
+}
+
+/* ---------- Sections thématiques ---------- */
+
+.period-section {
+  background: rgba(244, 236, 216, 0.04);
+  border: 1px solid rgba(201, 162, 39, 0.3);
+  border-left: 4px solid var(--or);
+  border-radius: 4px;
+  padding: 1.1rem 1.4rem;
+  margin: 1.3rem 0;
+}
+
+.period-section h3 {
+  margin-top: 0;
+  color: var(--or-clair);
+  font-size: 1.22rem;
+}
+
+.period-section p {
+  color: var(--ivoire-sombre);
+  text-align: justify;
+}
+
+.section-battles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+.section-battles-label {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--or);
+}
+
+.battle-link {
+  font-family: inherit;
+  font-size: 0.84rem;
+  padding: 0.28rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--rouge);
+  background: rgba(122, 31, 43, 0.25);
+  color: var(--ivoire);
+  cursor: pointer;
+}
+
+.battle-link:hover {
+  background: rgba(122, 31, 43, 0.5);
+}
+
+/* ---------- Défaites en contexte ---------- */
+
+.defeats-intro {
+  color: var(--ivoire-sombre);
+  max-width: 52rem;
+}
+
+.defeats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.defeat-card {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(122, 31, 43, 0.6);
+  border-top: 4px solid var(--rouge);
+  border-radius: 4px;
+  padding: 1rem 1.2rem;
+}
+
+.defeat-card h3 {
+  margin: 0 0 0.2rem;
+  font-size: 1.05rem;
+  color: var(--ivoire);
+}
+
+.defeat-year {
+  color: var(--or);
+  font-weight: 400;
+}
+
+.defeat-adversaire {
+  margin: 0 0 0.5rem;
+  font-size: 0.84rem;
+  font-style: italic;
+  color: rgba(244, 236, 216, 0.7);
+}
+
+.defeat-card p {
+  font-size: 0.9rem;
+  color: var(--ivoire-sombre);
+}
+
+/* ---------- Sources ---------- */
+
+.sources {
+  margin-top: 3rem;
+  border-top: 3px double var(--or);
+  padding-top: 1.5rem;
+}
+
+.sources h2 {
+  border-bottom: none;
+  margin-top: 0;
+}
+
+.sources-method {
+  background: rgba(244, 236, 216, 0.06);
+  border-left: 4px solid var(--or);
+  padding: 0.8rem 1.1rem;
+  color: var(--ivoire-sombre);
+  max-width: 56rem;
+}
+
+.bibliography {
+  columns: 2;
+  column-gap: 2.5rem;
+  padding-left: 1.2rem;
+  font-size: 0.9rem;
+  color: var(--ivoire-sombre);
+}
+
+.bibliography li {
+  margin-bottom: 0.55rem;
+  break-inside: avoid;
+}
+
+.sources-footer {
+  font-size: 0.8rem;
+  color: rgba(244, 236, 216, 0.55);
+  font-style: italic;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 720px) {
+  .bibliography {
+    columns: 1;
+  }
+
+  .animated-map {
+    height: 52vh;
+    min-height: 320px;
+  }
+
+  /* Sur mobile, la fiche devient un panneau plein écran sous la carte. */
+  .battle-card {
+    position: fixed;
+    inset: auto 0 0 0;
+    width: 100%;
+    max-height: 70vh;
+    border-left: none;
+    border-top: 4px solid var(--or);
+    border-radius: 12px 12px 0 0;
+  }
+
+  .timeline-status {
+    width: 100%;
+  }
+}

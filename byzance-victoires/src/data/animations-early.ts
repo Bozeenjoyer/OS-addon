@@ -200,7 +200,7 @@ export const earlyAnims: Record<string, BattleAnim> = {
           "Narsès démonte sa cavalerie au centre et déploie des milliers d'archers en croissant sur les ailes. Totila, qui attend des renforts, gagne du temps — puis choisit la charge frontale.",
         positions: {
           arcG: P(24, 8, 40), arcD: P(24, 52, -40), inf: P(18, 30),
-          res: P(8, 30), gothC: P(70, 30, 180), gothI: P(84, 30, 180),
+          res: P(7, 45), gothC: P(70, 30, 180), gothI: P(84, 30, 180),
         },
       },
       {
@@ -216,7 +216,7 @@ export const earlyAnims: Record<string, BattleAnim> = {
         description:
           "En fin de journée, Narsès engage sa réserve : la cavalerie gothique épuisée reflue sur sa propre infanterie et tout se débande. Totila, blessé dans la fuite, meurt — la guerre gothique est décidée.",
         positions: {
-          res: P(30, 30, 0), gothC: R(66, 34, 200), gothI: R(88, 32, 190),
+          res: P(48, 38, -15), gothC: R(66, 30, 200), gothI: R(88, 26, 190),
           inf: P(34, 28, 0),
         },
       },
@@ -691,11 +691,11 @@ export const earlyAnims: Record<string, BattleAnim> = {
 
   "bosphore-941": {
     terrain: [
-      { type: "mer", points: "0,10 100,10 100,62 0,62", label: "entrée du Bosphore" },
-      { type: "murs", points: "0,10 100,10", label: "côte de Bithynie au sud" },
+      { type: "mer", points: "0,0 100,0 100,48 0,48", label: "entrée du Bosphore" },
+      { type: "colline", x: 50, y: 58, rx: 60, ry: 9, label: "côte de Bithynie" },
     ],
     units: [
-      U("chel", "byz", "flotte", "15 chélandions (Théophane)"),
+      U("chel", "byz", "flotte", "15 chélandions"),
       U("feu", "byz", "feu", "Feu grégeois"),
       U("rus", "ennemi", "flotte", "Monoxyles rous'"),
       U("rus2", "ennemi", "flotte", "Monoxyles rous'"),
@@ -706,8 +706,8 @@ export const earlyAnims: Record<string, BattleAnim> = {
         description:
           "11 juin 941 : la grande flottille d'Igor approche pendant que la flotte principale est absente. Théophane arme en hâte quinze vieux chélandions équipés de siphons.",
         positions: {
-          chel: P(24, 34), feu: H(24, 34),
-          rus: P(66, 26, 180), rus2: P(74, 44, 180),
+          chel: P(22, 26), feu: H(22, 26),
+          rus: P(66, 16, 180), rus2: P(76, 34, 180),
         },
       },
       {
@@ -715,7 +715,7 @@ export const earlyAnims: Record<string, BattleAnim> = {
         description:
           "Par mer d'huile — condition idéale pour l'incendiaire —, les chélandions projettent le feu grégeois « comme la foudre » : les monoxyles flambent, les équipages se jettent à l'eau.",
         positions: {
-          chel: P(42, 34), feu: P(54, 32), rus: R(62, 24, 150),
+          chel: P(42, 26), feu: P(54, 24), rus: R(64, 15, 150),
         },
       },
       {
@@ -723,8 +723,8 @@ export const earlyAnims: Record<string, BattleAnim> = {
         description:
           "Les survivants qui pillent la Bithynie sont écrasés à terre, puis le reste de la flottille est détruit au retour. Le traité byzantino-rous' de 944 suivra.",
         positions: {
-          rus: H(84, 20), rus2: R(88, 48, 160), feu: H(54, 32),
-          chel: P(52, 36),
+          rus: H(84, 12), rus2: R(88, 38, 160), feu: H(54, 24),
+          chel: P(52, 28),
         },
       },
     ],

@@ -4,6 +4,18 @@ Site web interactif et pédagogique retraçant les plus grands succès militaire
 de l'Empire byzantin (Empire romain d'Orient), de la fondation de
 Constantinople (330) à la chute de 1453.
 
+## Démarrage sans rien installer (le plus simple)
+
+Le fichier **`Byzance - victoires (double-clic).html`** contient le site
+complet en un seul fichier : téléchargez-le et **double-cliquez** dessus,
+il s'ouvre dans votre navigateur. (Connexion Internet nécessaire pour le
+fond de carte.) Il est régénéré par `npm run build` (copie de
+`dist/index.html`).
+
+Sous Windows, avec Node.js installé, on peut aussi double-cliquer sur
+**`LANCER.bat`** : il installe les dépendances au premier lancement puis
+ouvre le site en mode développement.
+
 ## Démarrage
 
 ```bash

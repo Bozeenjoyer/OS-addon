@@ -322,6 +322,182 @@ h2 {
   background: #6c3a52;
 }
 
+/* ---------- Reconstitution animée ---------- */
+
+.battle-anim {
+  margin: 0.4rem 0 0.9rem;
+  border: 2px solid var(--or);
+  border-radius: 5px;
+  overflow: hidden;
+  background: #efe6cf;
+}
+
+.battle-anim-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.35rem 0.6rem;
+  background: var(--pourpre);
+  color: var(--or-clair);
+}
+
+.battle-anim-title {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}
+
+.battle-anim-disclaimer {
+  font-size: 0.68rem;
+  font-style: italic;
+  color: rgba(244, 236, 216, 0.75);
+}
+
+.battle-anim svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.anim-fond {
+  fill: #efe6cf;
+}
+
+.anim-mer {
+  fill: #b9cdd2;
+  stroke: #8fb0b8;
+  stroke-width: 0.4;
+}
+
+.anim-riviere {
+  fill: none;
+  stroke: #8fb0b8;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.anim-colline {
+  fill: #ddcea5;
+  stroke: #c3ad7e;
+  stroke-width: 0.5;
+}
+
+.anim-murs {
+  fill: none;
+  stroke: #7c6237;
+  stroke-width: 1.8;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+}
+
+.anim-camp {
+  fill: none;
+  stroke: #8a4a2e;
+  stroke-width: 0.7;
+  stroke-dasharray: 2 1.4;
+}
+
+.anim-terrain-label {
+  font-size: 2.6px;
+  font-style: italic;
+  fill: #8a7a5a;
+  font-family: Georgia, serif;
+}
+
+.anim-unit {
+  transition: transform 1.5s ease-in-out, opacity 1s ease;
+}
+
+.anim-unit > g {
+  transition: transform 1.5s ease-in-out;
+}
+
+.anim-unit.routed > g {
+  stroke-dasharray: 1 1;
+}
+
+.anim-unit-label {
+  font-size: 2.6px;
+  fill: #3f3323;
+  font-family: Georgia, serif;
+  paint-order: stroke;
+  stroke: rgba(239, 230, 207, 0.85);
+  stroke-width: 0.9px;
+}
+
+.anim-feu {
+  animation: feu-pulse 0.9s ease-in-out infinite alternate;
+}
+
+@keyframes feu-pulse {
+  from {
+    opacity: 0.75;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.battle-anim-caption {
+  padding: 0.55rem 0.7rem;
+  font-size: 0.83rem;
+  line-height: 1.5;
+  color: var(--encre);
+  border-top: 1px solid rgba(124, 98, 55, 0.35);
+  min-height: 4.6rem;
+}
+
+.battle-anim-caption strong {
+  color: var(--rouge);
+}
+
+.battle-anim-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.7rem 0.55rem;
+}
+
+.battle-anim-controls > button {
+  font-family: inherit;
+  font-size: 0.8rem;
+  width: 2rem;
+  height: 1.7rem;
+  border: 1px solid var(--rouge);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--rouge);
+  cursor: pointer;
+}
+
+.battle-anim-controls > button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.battle-anim-dots {
+  display: flex;
+  gap: 0.3rem;
+  margin-left: 0.5rem;
+}
+
+.battle-anim-dots button {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  border: 1px solid var(--rouge);
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.battle-anim-dots button.active {
+  background: var(--rouge);
+}
+
 /* ---------- Frise chronologique ---------- */
 
 .timeline {
@@ -378,7 +554,7 @@ h2 {
 
 .timeline-track {
   position: relative;
-  height: 3.1rem;
+  height: 4.4rem;
   border-bottom: 2px solid var(--or);
 }
 

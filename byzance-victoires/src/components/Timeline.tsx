@@ -38,6 +38,20 @@ export function Timeline({
   const progressPercent = lastRevealed ? yearToPercent(lastRevealed.annee) : 0;
   const finished = revealedCount >= battles.length;
 
+  // Décale verticalement les jalons d'années proches pour éviter les
+  // chevauchements : chaque jalon prend le premier « étage » libre parmi
+  // ses voisins de moins de 15 ans.
+  const levels: number[] = [];
+  battles.forEach((battle, index) => {
+    const used = new Set<number>();
+    for (let j = 0; j < index; j++) {
+      if (Math.abs(battle.annee - battles[j].annee) <= 14) used.add(levels[j]);
+    }
+    let level = 0;
+    while (used.has(level)) level++;
+    levels.push(level);
+  });
+
   return (
     <div className="timeline" id="frise">
       <div className="timeline-controls">
@@ -89,6 +103,7 @@ export function Timeline({
                 }`}
                 style={{
                   left: `${yearToPercent(battle.annee)}%`,
+                  bottom: `${0.4 + levels[index] * 0.95}rem`,
                   background: VICTORY_TYPE_COLORS[battle.type],
                 }}
                 title={`${battle.nom} (${battle.annee})`}

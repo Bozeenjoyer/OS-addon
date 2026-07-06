@@ -26,7 +26,7 @@ npm run preview
 
 ## Fonctionnalités
 
-- **Carte animée** (Leaflet) ouvrant directement la page, avec 20 victoires
+- **Carte animée** (Leaflet) ouvrant directement la page, avec 31 victoires
   byzantines géolocalisées (coordonnées approximatives).
 - **Bouton Lecture / Pause** : les batailles apparaissent dans l'ordre
   chronologique ; boutons « Réinitialiser » et « Tout afficher ».
@@ -39,6 +39,10 @@ npm run preview
   commandants, résultat, importance stratégique, résumé, effectifs et
   **niveau de certitude des effectifs** (connu / estimé / discuté / non
   fiable).
+- **Reconstitution animée de chaque bataille** : diagramme SVG schématique
+  en 3-4 phases (dispositifs, mouvements, terrain), avec lecture
+  automatique, navigation phase par phase et légende narrative — 31
+  scénarios fondés sur le déroulement décrit par les sources.
 - **Dix dossiers thématiques** (survie de l'empire, armée, tactiques,
   empereurs, généraux, victoires par adversaire, période tardive) avec liens
   croisés vers la carte.
@@ -66,18 +70,23 @@ byzance-victoires/
 │   ├── styles.css            # Thème byzantin (pourpre, or, ivoire)
 │   ├── types.ts              # Types, libellés et couleurs des victoires
 │   ├── components/
-│   │   ├── Header.tsx        # Titre et navigation
-│   │   ├── AnimatedMap.tsx   # Carte Leaflet animée
-│   │   ├── Timeline.tsx      # Frise 330–1453 + contrôles lecture/pause
-│   │   ├── BattleCard.tsx    # Fiche détaillée d'une bataille
-│   │   ├── VictoryFilters.tsx# Légende filtrante par type de victoire
-│   │   ├── PeriodSection.tsx # Dossiers thématiques
-│   │   └── Sources.tsx       # Bibliographie et note de méthode
+│   │   ├── Header.tsx           # Titre et navigation
+│   │   ├── AnimatedMap.tsx      # Carte Leaflet animée
+│   │   ├── Timeline.tsx         # Frise 330–1453 + contrôles lecture/pause
+│   │   ├── BattleCard.tsx       # Fiche détaillée d'une bataille
+│   │   ├── BattleAnimation.tsx  # Lecteur de reconstitution animée (SVG)
+│   │   ├── VictoryFilters.tsx   # Légende filtrante par type de victoire
+│   │   ├── PeriodSection.tsx    # Dossiers thématiques
+│   │   └── Sources.tsx          # Bibliographie et note de méthode
 │   └── data/
-│       ├── battles.ts        # Les 20 victoires (données séparées du code)
-│       ├── defeats.ts        # Défaites majeures, en contexte uniquement
-│       ├── sections.ts       # Contenu des dossiers thématiques
-│       └── bibliography.ts   # Bibliographie
+│       ├── battles.ts           # Les 31 victoires (données séparées du code)
+│       ├── anim-types.ts        # Types des reconstitutions animées
+│       ├── animations-early.ts  # Scénarios animés 530-941
+│       ├── animations-late.ts   # Scénarios animés 960-1259
+│       ├── animations.ts        # Index des reconstitutions
+│       ├── defeats.ts           # Défaites majeures, en contexte uniquement
+│       ├── sections.ts          # Contenu des dossiers thématiques
+│       └── bibliography.ts      # Bibliographie
 └── vite.config.ts
 ```
 

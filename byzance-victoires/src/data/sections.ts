@@ -42,14 +42,14 @@ export const sections: ThemeSection[] = [
     titre: "Les grands généraux",
     paragraphes: [
       "Bélisaire, le général de Justinien, gagne à Dara, Ad Decimum et Tricamarum avec des armées réduites : maître du terrain préparé et du tempo, il détruit le royaume vandale en quelques mois. Narsès, eunuque de cour devenu stratège septuagénaire, remporte à Taginae et au Casilinum deux des victoires les mieux conduites de l'Antiquité tardive.",
-      "Petronas orchestre en 863 la convergence de plusieurs armées sur l'émir de Mélitène (Lalakaon) — un chef-d'œuvre de manœuvre stratégique. Nicéphore Ouranos, lettré et général, anéantit Samuel au Sperchée ; Bardas Sklèros sauve la Thrace à Arcadiopolis ; Jean Kourkouas, non représenté ici par une bataille unique, ouvre par vingt ans de campagnes la voie des reconquêtes orientales.",
+      "Petronas orchestre en 863 la convergence de plusieurs armées sur l'émir de Mélitène (Lalakaon) — un chef-d'œuvre de manœuvre stratégique. Nicéphore Ouranos, lettré et général, anéantit Samuel au Sperchée ; Bardas Sklèros sauve la Thrace à Arcadiopolis ; Jean Kourkouas ouvre par vingt ans de campagnes la voie des reconquêtes orientales — la prise de Mélitène (934) en est le jalon décisif.",
       "À l'époque comnène et après : Andronic Kontostéphanos gagne Sirmium pour Manuel Ier, Jean Vatatzès venge Myriokephalon au Méandre, et Alexis Stratégopoulos — présent à Pélagonie — reprendra Constantinople en 1261 avec une poignée d'hommes. Byzance a souvent survécu parce qu'elle savait confier ses armées à des professionnels.",
     ],
   },
   {
     id: "perses",
     titre: "Les victoires contre les Perses",
-    batailles: ["dara-530", "constantinople-626", "ninive-627"],
+    batailles: ["dara-530", "satala-530", "solachon-586", "constantinople-626", "ninive-627"],
     paragraphes: [
       "L'empire sassanide fut pendant trois siècles le rival par excellence — l'« autre œil du monde », selon l'expression attribuée aux diplomates des deux cours. Dara (530) montre qu'une armée romaine bien commandée peut battre les Perses en rase campagne ; la « Paix éternelle » qui suit ne dure pourtant que huit ans.",
       "La grande guerre de 602-628 est une lutte à mort : la Perse conquiert la Syrie, l'Égypte et emporte la relique de la Vraie Croix. La défense victorieuse de Constantinople (626) puis la campagne d'Héraclius, conclue à Ninive (627), renversent totalement la situation : Khosrô II est renversé, toutes les conquêtes restituées.",
@@ -59,7 +59,16 @@ export const sections: ThemeSection[] = [
   {
     id: "arabes",
     titre: "Les victoires contre les Arabes",
-    batailles: ["constantinople-717", "akroinon-740", "lalakaon-863", "cap-stelai-880"],
+    batailles: [
+      "constantinople-674",
+      "constantinople-717",
+      "akroinon-740",
+      "lalakaon-863",
+      "cap-stelai-880",
+      "melitene-934",
+      "andrassos-960",
+      "crete-961",
+    ],
     paragraphes: [
       "Face à l'expansion islamique, Byzance est le seul État du bassin méditerranéen oriental à tenir. Le siège de 717-718 est le moment décisif : l'échec de Maslama devant les murs théodosiens, le feu grégeois et l'alliance bulgare brisent la perspective d'une conquête de l'Europe du Sud-Est par l'Orient.",
       "Suit un long duel frontalier de deux siècles : raids annuels, guerre de forteresses et d'embuscades dans le Taurus. Akroinon (740) marque la première grande victoire rangée en Anatolie ; Lalakaon (863) détruit la puissance de Mélitène et fait définitivement basculer l'initiative du côté byzantin.",
@@ -69,7 +78,7 @@ export const sections: ThemeSection[] = [
   {
     id: "bulgares",
     titre: "Les victoires contre les Bulgares",
-    batailles: ["spercheios-997", "kleidion-1014", "arcadiopolis-970"],
+    batailles: ["arcadiopolis-970", "dorostolon-971", "spercheios-997", "kleidion-1014"],
     paragraphes: [
       "La Bulgarie fut l'ennemi le plus proche et parfois le plus dangereux : Krum tua un empereur au combat (811) et Syméon rêva de prendre Constantinople. Mais elle fut aussi, à l'occasion, une alliée décisive — sans Tervel et ses cavaliers en 717-718, l'histoire du siège arabe eût peut-être été différente.",
       "La grande confrontation a lieu sous Basile II contre le tsar Samuel : guerre d'usure de quarante ans, jalonnée par la surprise nocturne du Sperchée (997) et conclue par Kleidion (1014) puis l'annexion de 1018. L'empire retrouve alors la frontière du Danube, perdue depuis le VIIe siècle.",
@@ -79,7 +88,7 @@ export const sections: ThemeSection[] = [
   {
     id: "normands-latins",
     titre: "Les victoires contre les Normands et les Latins",
-    batailles: ["sirmium-1167", "pelagonia-1259"],
+    batailles: ["sirmium-1167", "demetritzes-1185", "poimanenon-1224", "pelagonia-1259"],
     paragraphes: [
       "À partir du XIe siècle, l'Occident latin devient un adversaire majeur : Normands d'Italie du Sud, croisés, puis puissances issues de la quatrième croisade. Contre Robert Guiscard puis Bohémond, Alexis Ier perd des batailles (Dyrrachion, 1081) mais gagne les guerres — par l'usure, la flotte vénitienne alliée et le traité de Devol (1108), victoire stratégique sans bataille.",
       "Le XIIe siècle comnène tient le choc : Jean II et Manuel Ier verrouillent les Balkans, et Sirmium (1167) impose la suprématie byzantine à la Hongrie, puissance liée au monde latin. En 1185, l'invasion normande qui a mis Thessalonique à sac est anéantie à Démétritzès — dernière grande victoire de l'ère des Anges.",
@@ -89,7 +98,7 @@ export const sections: ThemeSection[] = [
   {
     id: "tardive",
     titre: "Les victoires de la période tardive",
-    batailles: ["pelagonia-1259"],
+    batailles: ["antioche-meandre-1211", "poimanenon-1224", "pelagonia-1259"],
     paragraphes: [
       "Après 1204, l'« empire » n'est plus qu'un archipel d'États grecs rivaux ; après 1261, un État moyen aux ressources comptées. Les victoires changent de nature : plus de grandes reconquêtes, mais des succès ponctuels obtenus par la manœuvre, la diplomatie et l'économie de forces — Pélagonie (1259) en est le modèle, gagnée autant par la dislocation de la coalition adverse que par les armes.",
       "La reprise de Constantinople elle-même (25 juillet 1261) est un coup d'audace presque sans combat : Alexis Stratégopoulos, avec une petite armée, profite de l'absence de la garnison latine. Au XIVe siècle encore, Jean Cantacuzène ou les gouverneurs de Morée remportent des succès locaux, et la péninsule du Péloponnèse redevient presque entièrement grecque vers 1430.",

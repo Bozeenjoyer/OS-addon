@@ -1,5 +1,7 @@
 import type { Battle, Certitude } from "../types";
 import { VICTORY_TYPE_COLORS, VICTORY_TYPE_LABELS } from "../types";
+import { animations } from "../data/animations";
+import { BattleAnimation } from "./BattleAnimation";
 
 const CERTITUDE_CLASS: Record<Certitude, string> = {
   connu: "certitude-connu",
@@ -15,6 +17,7 @@ interface Props {
 
 /** Fiche détaillée d'une bataille, ouverte au clic sur un marqueur ou un jalon. */
 export function BattleCard({ battle, onClose }: Props) {
+  const anim = animations[battle.id];
   return (
     <aside className="battle-card" aria-label={`Fiche : ${battle.nom}`}>
       <button
@@ -34,6 +37,8 @@ export function BattleCard({ battle, onClose }: Props) {
       </span>
       <h3>{battle.nom}</h3>
       <p className="battle-date">{battle.date}</p>
+
+      {anim && <BattleAnimation key={battle.id} anim={anim} />}
 
       <dl className="battle-fields">
         <dt>Lieu</dt>
